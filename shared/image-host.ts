@@ -37,6 +37,7 @@ export function isGitHubImageHost(url: string): boolean {
   if (host.username !== "" || host.password !== "") return false;
   const name = host.hostname.toLowerCase();
   if (name.endsWith(".githubusercontent.com")) return true;
-  return name === "github.com" && host.pathname.startsWith("/user-attachments/");
+  const githubWeb = name === "github.com" || name === "github.rbx.com";
+  return githubWeb && host.pathname.startsWith("/user-attachments/");
 }
 

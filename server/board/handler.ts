@@ -62,7 +62,7 @@ export async function loadBoardHandler(
       ? requested
       : (settings.login ?? (await resolveViewerLogin()));
 
-  const key = `${resolved}\u0000${limit}\u0000${[...owners].sort().join(",")}`;
+  const key = `${settings.hostname ?? ""}\u0000${resolved}\u0000${limit}\u0000${[...owners].sort().join(",")}`;
 
   const { columns, fetchedAt } = await boardCache.get(
     key,

@@ -1,3 +1,4 @@
+import { projectScopeCommand } from "../github/host";
 import type { GraphqlError } from "../github/graphql";
 
 /**
@@ -8,7 +9,7 @@ import type { GraphqlError } from "../github/graphql";
  * of the per-owner partial-failure handling, not folded into it.
  */
 export const PROJECT_SCOPE_MESSAGE =
-  "GitHub Projects needs a scope this token does not have. Run `gh auth refresh -h github.com -s read:project`, then reload.";
+  `GitHub Projects needs a scope this token does not have. Run \`${projectScopeCommand("github.rbx.com")}\`, then reload.`;
 
 export function needsProjectScope(errors: readonly GraphqlError[]): boolean {
   return errors.some(

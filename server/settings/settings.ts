@@ -22,7 +22,7 @@ function paseoHome(): string {
  * plugin id, which the daemon also uses as its config key.
  */
 function settingsPath(): string {
-  return join(paseoHome(), "plugins", "github-integration", "settings.json");
+  return join(paseoHome(), "plugins", "github-dashboard", "settings.json");
 }
 
 /**
@@ -32,7 +32,7 @@ function settingsPath(): string {
  * new path and the old file is then dead.
  */
 function legacyIdSettingsPath(): string {
-  return join(paseoHome(), "plugins", "github-board", "settings.json");
+  return join(paseoHome(), "plugins", "github-integration", "settings.json");
 }
 
 /**
@@ -86,6 +86,11 @@ interface LegacySettings {
 export interface Settings {
   /** Null until the user pins one; the caller falls back to the gh viewer. */
   login: string | null;
+  /**
+   * GitHub hostname for `gh` (`GH_HOST`). Null uses github.com unless
+   * `GH_HOST` is already set in the daemon environment.
+   */
+  hostname: string | null;
   launch: LaunchDefaults;
   /**
    * Non-null only on a file written before the move, and only until the app
@@ -97,6 +102,7 @@ export interface Settings {
 
 const EMPTY_SETTINGS: Settings = {
   login: null,
+  hostname: null,
   launch: { ...EMPTY_LAUNCH },
   legacy: null,
 };
@@ -186,6 +192,7 @@ export async function readSettings(): Promise<Settings> {
       const login = record.login;
       return {
         login: typeof login === "string" && login.trim() !== "" ? login.trim() : null,
+        hostname: asString(record.hostname),
         launch: readLaunch(record.launch),
         legacy: readLegacy(record),
       };

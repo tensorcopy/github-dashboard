@@ -15,7 +15,7 @@ import type { ProjectsStyles } from "./projects.styles";
  * so the copy button and the acceptance of this view do not depend on wording
  * the server is free to change.
  */
-const SCOPE_COMMAND = "gh auth refresh -h github.com -s read:project";
+const SCOPE_COMMAND = "gh auth refresh -h github.rbx.com -s read:project";
 
 /**
  * The Projects tab's landing view: every project the viewer's owners have,

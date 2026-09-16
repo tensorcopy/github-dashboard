@@ -1,8 +1,12 @@
-# paseo-github-integration
+# GitHub Dashboard for Paseo
 
 GitHub inside [Paseo](https://paseo.sh): the issues and pull requests you are attached to, the ones
 waiting on your review, your Projects boards, and the review actions that finish a pull request —
 without leaving the app, and with one click to hand any of them to a coding agent.
+
+This dashboard also links a pull request back to its original Paseo chat. It matches the PR tracked
+by each active or retained workspace to the first agent created there, then adds an **Open original
+chat** action to the PR row and detail panel.
 
 ![The GitHub surface: the Pull requests / Issues / Discussions / Projects switcher, the relation
 chips with their counts, the owner and repository pickers, the search box, and the list of pull
@@ -34,6 +38,9 @@ method the repository allows, edit labels, open on GitHub — or **send to chat*
 Paseo agent with a prompt template of your choosing, in a workspace of your choosing, with the
 issue or pull request pinned to the top of the conversation.
 
+For pull requests associated with a Paseo workspace, **Open original chat** jumps directly to the
+first agent in that workspace.
+
 ![One pull request open in the detail panel: title, author, branches, checks, the Approve, Merge,
 Send to chat and Open on GitHub actions, and the rendered body.](images/detail-panel.png)
 
@@ -48,11 +55,11 @@ Requires Paseo **0.8.0 or newer** on the daemon *and* on the app, plus the
 it and never handles a token itself.
 
 ```bash
-paseo plugin add alysnnix/paseo-github-integration
+paseo plugin add tensorcopy/github-dashboard
 ```
 
 Then enable plugins on the daemon (Settings → Plugins) if they are not already on, and open
-**GitHub** in the sidebar.
+**GitHub Dashboard** in the sidebar.
 
 For Projects:
 

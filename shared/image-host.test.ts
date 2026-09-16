@@ -6,6 +6,10 @@ describe("isGitHubImageHost", () => {
     expect(isGitHubImageHost("https://github.com/user-attachments/assets/abc-123")).toBe(true);
   });
 
+  it("accepts a GitHub Enterprise user-attachments URL", () => {
+    expect(isGitHubImageHost("https://github.rbx.com/user-attachments/assets/abc-123")).toBe(true);
+  });
+
   it("accepts a githubusercontent.com URL", () => {
     expect(isGitHubImageHost("https://raw.githubusercontent.com/owner/repo/main/img.png")).toBe(true);
   });

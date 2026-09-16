@@ -25,19 +25,19 @@ export default function contribute(client: PluginClientContext) {
   });
   client.addSidebarItem({
     id: "board",
-    title: "GitHub",
+    title: "GitHub Dashboard",
     icon: "Github",
     surface: "board",
   });
   client.addSettingsScreen({
     id: "board",
-    title: "GitHub board",
+    title: "GitHub dashboard",
     icon: "Github",
     Component: BoardSettingsScreen,
   });
   client.addCommandCenterItem({
     id: "board-settings",
-    title: "GitHub board settings",
+    title: "GitHub dashboard settings",
     icon: "Settings",
     keywords: ["github", "prompts", "templates", "login"],
     context: "global",
@@ -47,7 +47,7 @@ export default function contribute(client: PluginClientContext) {
   });
   client.addCommandCenterItem({
     id: "open-board",
-    title: "Open GitHub board",
+    title: "Open GitHub dashboard",
     icon: "Github",
     keywords: ["github", "issues", "pull requests", "prs", "discussions"],
     context: "global",
