@@ -10,7 +10,11 @@ chat** action to the PR row and detail panel.
 
 Every authenticated host reported by `gh auth status --json hosts` is queried together. A single
 dashboard can therefore show github.com and GitHub Enterprise work at the same time, using each
-host's active account and keeping reads and actions routed to the host that owns the item.
+host's active account and keeping reads and actions routed to the host that owns the item. With more
+than one host on the board, the list is divided into a section per host rather than interleaving them.
+
+Opening the surface does not wait on GitHub: a board the daemon already has is painted immediately
+and refreshed behind it, and the refreshed one replaces it as soon as the sweep lands.
 
 ![The GitHub surface: the Pull requests / Issues / Discussions / Projects switcher, the relation
 chips with their counts, the owner and repository pickers, the search box, and the list of pull
