@@ -14,7 +14,10 @@ host's active account and keeping reads and actions routed to the host that owns
 than one host on the board, the list is divided into a section per host rather than interleaving them.
 
 Opening the surface does not wait on GitHub: a board the daemon already has is painted immediately
-and refreshed behind it, and the refreshed one replaces it as soon as the sweep lands.
+and refreshed behind it, and the refreshed one replaces it as soon as the sweep lands. Every open,
+and every return to the app, asks the daemon; the daemon sweeps GitHub again when its own board is
+more than a minute old, so a pull request merged elsewhere leaves the list within seconds of the
+board being opened. The header says how old the board on screen is.
 
 ![The GitHub surface: the Pull requests / Issues / Discussions / Projects switcher, the relation
 chips with their counts, the owner and repository pickers, the search box, and the list of pull
